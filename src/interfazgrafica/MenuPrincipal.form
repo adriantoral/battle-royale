@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="interfazgrafica.MenuPrincipal">
+  <grid id="27dc6" binding="panelPrincipal" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="d4086" binding="panelBotones" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <autoscrolls value="false"/>
+          <visible value="true"/>
+        </properties>
+        <border type="none" title="Seleccione un personaje"/>
+        <children/>
+      </grid>
+      <grid id="c3134" binding="panelInformativo" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="South"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="19c61" class="javax.swing.JLabel" binding="etiquetaPersonaje">
+            <constraints border-constraint="South"/>
+            <properties>
+              <horizontalAlignment value="0"/>
+              <text value="Tu personaje es el predeterminado"/>
+            </properties>
+          </component>
+          <component id="db291" class="javax.swing.JButton" binding="botonEmpezar">
+            <constraints border-constraint="North"/>
+            <properties>
+              <label value="Empezar juego"/>
+              <text value="Empezar juego"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
