@@ -14,7 +14,7 @@ public class Arco extends Herramienta
 
     public Arco (Integer danio)
     {
-        super("Arco magico", danio, 15, TiposHerramientas.DISTANCIA);
+        super("Arco vitalicio", danio, 15, TiposHerramientas.DISTANCIA);
     }
 
     @Override

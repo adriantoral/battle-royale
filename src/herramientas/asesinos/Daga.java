@@ -13,7 +13,7 @@ public class Daga extends Herramienta
 
     public Daga (Integer danio)
     {
-        super("Daga", danio, 20, TiposHerramientas.MELEE);
+        super("Daga del asesino", danio, 20, TiposHerramientas.MELEE);
     }
 
     @Override

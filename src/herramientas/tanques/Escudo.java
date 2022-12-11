@@ -13,7 +13,7 @@ public class Escudo extends Herramienta
 
     public Escudo (Integer danio)
     {
-        super("Escudo", danio, 200, TiposHerramientas.DEFENSA);
+        super("Escudo de coran", danio, 200, TiposHerramientas.DEFENSA);
     }
 
     @Override

@@ -14,7 +14,7 @@ public class Espada extends Herramienta
 
     public Espada (Integer danio)
     {
-        super("Espada", danio, 40, TiposHerramientas.MELEE);
+        super("Espada de coran", danio, 40, TiposHerramientas.MELEE);
     }
 
     @Override
