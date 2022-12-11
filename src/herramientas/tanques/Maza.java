@@ -1,5 +1,7 @@
-package herramientas;
+package herramientas.tanques;
 
+import herramientas.Herramienta;
+import herramientas.TiposHerramientas;
 import personajes.Personaje;
 
 import java.util.Random;

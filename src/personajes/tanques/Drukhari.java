@@ -1,17 +1,20 @@
-package personajes;
+package personajes.tanques;
 
-import habilidades.Curacion;
-import habilidades.Mitigacion;
-import herramientas.Escudo;
+import habilidades.potenciadores.Curacion;
+import habilidades.potenciadores.Mitigacion;
 import herramientas.TiposHerramientas;
+import herramientas.tanques.Escudo;
+import personajes.Personaje;
+import personajes.TiposPersonajes;
 
-public class Tanque extends Personaje
+public class Drukhari extends Personaje
 {
-    public Tanque (String nombre)
+    public Drukhari ( )
     {
         // Inicializa las variables de control del personaje
-        this.setNombre(nombre);
+        this.setNombre("Drukhari");
         this.setSalud(1500);
+        this.setMana(27);
         this.setArmadura(100);
         this.setPenetracionArmadura(5);
         this.setTipo(TiposPersonajes.TANQUE);

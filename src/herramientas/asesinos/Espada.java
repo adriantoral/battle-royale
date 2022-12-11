@@ -1,5 +1,7 @@
-package herramientas;
+package herramientas.asesinos;
 
+import herramientas.Herramienta;
+import herramientas.TiposHerramientas;
 import personajes.Personaje;
 import personajes.TiposPersonajes;
 

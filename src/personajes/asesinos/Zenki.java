@@ -1,19 +1,22 @@
-package personajes;
+package personajes.asesinos;
 
-import habilidades.Intensificacion;
-import habilidades.Letalidad;
-import herramientas.Daga;
+import habilidades.potenciadores.Intensificacion;
+import habilidades.potenciadores.Letalidad;
 import herramientas.TiposHerramientas;
+import herramientas.asesinos.Daga;
+import personajes.Personaje;
+import personajes.TiposPersonajes;
 
 import java.util.Random;
 
-public class Asesino extends Personaje
+public class Zenki extends Personaje
 {
-    public Asesino (String nombre)
+    public Zenki ( )
     {
         // Inicializa las variables de control del personaje
-        this.setNombre(nombre);
+        this.setNombre("Zenki");
         this.setSalud(600);
+        this.setMana(18);
         this.setArmadura(20);
         this.setPenetracionArmadura(90);
         this.setTipo(TiposPersonajes.ASESINO);

@@ -1,9 +1,9 @@
 import habilidades.TipoObjetivo;
 import interfazgrafica.MenuPrincipal;
-import personajes.Asesino;
-import personajes.Mago;
 import personajes.Personaje;
-import personajes.Tanque;
+import personajes.asesinos.Zenki;
+import personajes.magos.Sariel;
+import personajes.tanques.Drukhari;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -15,17 +15,28 @@ import java.util.concurrent.TimeUnit;
 public class BattleRoyale
 {
     // Personajes disponibles para seleccionar
-    static List<Personaje> personajesSeleccionables = new ArrayList<>(List.of(new Asesino("DefaultAsesion"), new Mago("DefaultMago"), new Tanque("DefaultTanque")));
+    static List<Personaje> personajesSeleccionables = new ArrayList<>(List.of(new Zenki( ), new Sariel( ), new Drukhari( )));
 
     // Personaje del jugador
-    static Personaje personajeJugador = new Asesino("Default");
+    static Personaje personajeJugador = new Zenki( );
 
     public static void jugar ( )
     {
         List<Personaje> personajesJugables = new ArrayList<>( );
 
         // Crea los personajes
-        for (int i = 0; i < 10; i++) personajesJugables.add(new Tanque("Tanque" + i));
+        for (int i = 0; i < 10; i++)
+            personajesJugables.add(new Zenki( )
+            {
+                public Personaje construir ( )
+                {
+                    // Modificar el nombre
+                    this.setNombre("ROBOT " + personajesJugables.size( ));
+
+                    // Devolver el personaje
+                    return this;
+                }
+            }.construir( ));
 
         // Cambiando el personaje principal
         personajesJugables.add(0, personajeJugador);
@@ -80,6 +91,7 @@ public class BattleRoyale
             }
             else opcion = new Random( ).nextInt(4);
 
+            // Habilidades
             if (opcion == 1 || opcion == 2)
             {
                 // Pedir valor al usuario si es su personaje
@@ -90,29 +102,35 @@ public class BattleRoyale
                 }
                 else opcion2 = new Random( ).nextInt(2);
 
+                // Habilidad 1
                 if (opcion == 1)
                 {
                     if (opcion2 <= 0) personajeAtacante.getHabilidad1( ).invocar( );
                     else personajeAtacante.getHabilidad1( ).mejorar( );
                 }
 
+                // Habilidad 2
                 else
                 {
                     if (opcion2 <= 0) personajeAtacante.getHabilidad2( ).invocar( );
                     else personajeAtacante.getHabilidad2( ).mejorar( );
                 }
+
+                // Recargar 3 de mana despues de usar una habilidad si no es invocada
+                if (opcion2 > 0) personajeAtacante.setMana(personajeAtacante.getMana( ) + 3);
             }
 
+            // Reparacion herramienta
             else if (opcion == 3) personajeAtacante.getHerramienta( ).reparar( );
 
             else personajeAtacante.atacar(personajeAtacado);
 
             // Eliminar personajes si mueren
             if (personajeAtacado.getSalud( ) <= 0) System.out.println("Se ha eliminado al personaje: " + personajesJugables.remove(personajeAtacado));
-
             if (personajeAtacante.getSalud( ) <= 0) System.out.println("Se ha eliminado al personaje: " + personajesJugables.remove(personajeAtacante));
 
-            if (personajeAtacante == personajeJugador)
+            // Espera despues del ataque del jugador
+            if (personajeAtacante == personajeJugador && !isSimulacion)
             {
                 try
                 {
@@ -125,8 +143,10 @@ public class BattleRoyale
             }
         }
 
+        // Mostar en pantalla el ganador
         System.out.println("HA GANADO EL PERSONAJE: " + personajesJugables.get(0));
 
+        // Cerrar el scanner
         scanner.close( );
     }
 
@@ -137,7 +157,7 @@ public class BattleRoyale
 
         // Crear los botones para seleccionar el personaje del jugador
         for (Personaje personaje : personajesSeleccionables)
-            menuPrincipal.getPanelBotones( ).add(new JButton(personaje.getNombre( ).toString( ))
+            menuPrincipal.getPanelBotones( ).add(new JButton(personaje.getNombre( ))
             {
                 public JButton construir ( )
                 {

@@ -1,24 +1,26 @@
-package personajes;
+package personajes.magos;
 
-import habilidades.Envenenamiento;
-import habilidades.Intensificacion;
-import herramientas.ArcoMagico;
-import herramientas.Maza;
+import habilidades.debilitadores.Envenenamiento;
+import habilidades.potenciadores.Intensificacion;
 import herramientas.TiposHerramientas;
+import herramientas.magos.Arco;
+import personajes.Personaje;
+import personajes.TiposPersonajes;
 
-public class Mago extends Personaje
+public class Sariel extends Personaje
 {
-    public Mago (String nombre)
+    public Sariel ( )
     {
         // Inicializa las variables de control del personaje
-        this.setNombre(nombre);
+        this.setNombre("Sariel");
         this.setSalud(900);
+        this.setMana(9);
         this.setArmadura(40);
         this.setPenetracionArmadura(50);
         this.setTipo(TiposPersonajes.MAGO);
 
         // Inicializa las varibles de utilidad del personaje
-        this.setHerramienta(new Maza(80));
+        this.setHerramienta(new Arco(80));
 
         this.setHabilidad1(new Envenenamiento(this, 15));
         this.setHabilidad2(new Intensificacion(this, 10));

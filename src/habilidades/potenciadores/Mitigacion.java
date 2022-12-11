@@ -1,5 +1,7 @@
-package habilidades;
+package habilidades.potenciadores;
 
+import habilidades.Habilidad;
+import habilidades.TipoObjetivo;
 import personajes.Personaje;
 
 public class Mitigacion extends Habilidad
@@ -8,6 +10,8 @@ public class Mitigacion extends Habilidad
     Habilidad que otorga mas armadura al jugador
     Cuando se mejora incrementa la cantidad de armadura en 12
      */
+
+    static Integer manaNecesitado = 5;
 
     private Integer mitigacion;
 
@@ -21,11 +25,21 @@ public class Mitigacion extends Habilidad
     @Override
     public void invocar ( )
     {
-        // Invocacion
-        this.getPersonaje( ).setArmadura(this.getPersonaje( ).getArmadura( ) + this.mitigacion);
+        if (this.getPersonaje( ).getMana( ) >= Mitigacion.manaNecesitado)
+        {
+            // Invocacion
+            this.getPersonaje( ).setArmadura(this.getPersonaje( ).getArmadura( ) + this.mitigacion);
+            this.getPersonaje( ).setMana(this.getPersonaje( ).getMana( ) - Mitigacion.manaNecesitado);
 
-        // Depuracion
-        System.out.println("\u001B[34m[HABILIDAD] Ha aumentado en " + this.mitigacion + " la armadura de " + this.getPersonaje( ).getNombre( ) + " (" + this.getPersonaje( ).getArmadura( ) + ")\u001B[37m");
+            // Depuracion
+            System.out.println("\u001B[34m[HABILIDAD] Ha aumentado en " + this.mitigacion + " la armadura de " + this.getPersonaje( ).getNombre( ) + " (" + this.getPersonaje( ).getArmadura( ) + ")\u001B[37m");
+        }
+
+        else
+        {
+            System.out.println("NO has tenido mana para invocar la habilidad, se mejorara automaticamente...");
+            this.mejorar( );
+        }
     }
 
     @Override

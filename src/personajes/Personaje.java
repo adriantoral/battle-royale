@@ -7,7 +7,7 @@ public abstract class Personaje
 {
     private String nombre;
 
-    private Integer salud, armadura, penetracionArmadura;
+    private Integer salud, mana, armadura, penetracionArmadura;
 
     private TiposPersonajes tipo;
 
@@ -35,6 +35,9 @@ public abstract class Personaje
 
             // Pasiva de las herramientas
             this.herramienta.pasiva(personaje, this);
+
+            // Recargar el mana
+            this.mana += 3;
         }
     }
 
@@ -46,6 +49,7 @@ public abstract class Personaje
         return "Personaje{" +
                 "nombre='" + nombre + '\'' +
                 ", salud=" + salud +
+                ", mana=" + mana +
                 ", armadura=" + armadura +
                 ", penetracionArmadura=" + penetracionArmadura +
                 ", tipo=" + tipo +
@@ -133,5 +137,15 @@ public abstract class Personaje
     public void setNombre (String nombre)
     {
         this.nombre = nombre;
+    }
+
+    public Integer getMana ( )
+    {
+        return mana;
+    }
+
+    public void setMana (Integer mana)
+    {
+        this.mana = mana;
     }
 }

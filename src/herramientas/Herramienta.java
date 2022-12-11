@@ -22,7 +22,11 @@ public abstract class Herramienta
 
     public void reparar ( )
     {
+        // Invocacion
         this.durabilidad = this.durabilidadReparada;
+
+        // Depuracion
+        System.out.println("\u001B[32m[REPARACION " + this.getNombre( ) + "] Ha reparado su herramienta (" + this.durabilidad + ")\u001B[37m");
     }
 
     public abstract void pasiva (Personaje personaje, Personaje jugador);
