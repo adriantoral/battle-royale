@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="interfazgrafica.MenuJuego">
+  <grid id="27dc6" binding="panelPrincipal" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="790" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="e59d3" class="javax.swing.JTextPane" binding="panelRegistro">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <contentType value="text/plain"/>
+          <focusable value="false"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <grid id="dd74f" binding="panelBotones" layout-manager="GridLayoutManager" row-count="2" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints border-constraint="South"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="f5b33" class="javax.swing.JButton" binding="botonHabilidad2Invocar">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <actionCommand value=""/>
+              <label value="Invocar habilidad 2"/>
+              <text value="Invocar habilidad 2"/>
+            </properties>
+          </component>
+          <component id="67dc" class="javax.swing.JButton" binding="botonHabilidad1Mejorar">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <actionCommand value=""/>
+              <label value="Mejorar habilidad 1"/>
+              <text value="Mejorar habilidad 1"/>
+            </properties>
+          </component>
+          <component id="d4dde" class="javax.swing.JButton" binding="botonReparar">
+            <constraints>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <label value="Reparar herramienta"/>
+              <text value="Reparar herramienta"/>
+            </properties>
+          </component>
+          <component id="88143" class="javax.swing.JButton" binding="botonHabilidad2Mejorar">
+            <constraints>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <actionCommand value=""/>
+              <label value="Mejorar habilidad 2"/>
+              <text value="Mejorar habilidad 2"/>
+            </properties>
+          </component>
+          <component id="24a55" class="javax.swing.JButton" binding="botonAtacar">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <actionCommand value=""/>
+              <label value="Auto atacar"/>
+              <text value="Auto atacar"/>
+            </properties>
+          </component>
+          <component id="ba40e" class="javax.swing.JButton" binding="botonHabilidad1Invocar">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <actionCommand value=""/>
+              <label value="Invocar habilidad 1"/>
+              <text value="Invocar habilidad 1"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="e8f3" binding="panelInformativo" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="North"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="28656" class="javax.swing.JLabel" binding="textoInformativo1">
+            <constraints border-constraint="North"/>
+            <properties>
+              <foreground color="-11117893"/>
+              <horizontalAlignment value="0"/>
+              <opaque value="true"/>
+              <text value="Tu personaje es:"/>
+            </properties>
+          </component>
+          <component id="114f8" class="javax.swing.JLabel" binding="textoInformativo2">
+            <constraints border-constraint="South"/>
+            <properties>
+              <foreground color="-4500612"/>
+              <horizontalAlignment value="0"/>
+              <opaque value="true"/>
+              <text value="El personaje a que estas atacando:"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

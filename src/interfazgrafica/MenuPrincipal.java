@@ -5,40 +5,18 @@ import java.awt.*;
 
 public class MenuPrincipal extends Frame
 {
-    private JPanel panelPrincipal;
-    private JPanel panelBotones;
-    private JLabel etiquetaPersonaje;
-    private JPanel panelInformativo;
-    private JButton botonEmpezar;
+	private JPanel panelPrincipal, panelBotones;
 
-    public MenuPrincipal (String title) throws HeadlessException
-    {
-        super(title);
-        this.setContentPane(this.panelPrincipal);
-    }
+	public MenuPrincipal (String title) throws
+	                                    HeadlessException
+	{
+		super(title);
 
-    public JPanel getPanelPrincipal ( )
-    {
-        return panelPrincipal;
-    }
+		// Establecer el contenedor padre
+		this.setContentPane(this.panelPrincipal);
+	}
 
-    public JPanel getPanelBotones ( )
-    {
-        return panelBotones;
-    }
+	public JPanel getPanelPrincipal ( ) {return panelPrincipal;}
 
-    public JLabel getEtiquetaPersonaje ( )
-    {
-        return etiquetaPersonaje;
-    }
-
-    public JPanel getPanelInformativo ( )
-    {
-        return panelInformativo;
-    }
-
-    public JButton getBotonEmpezar ( )
-    {
-        return botonEmpezar;
-    }
+	public JPanel getPanelBotones ( ) {return panelBotones;}
 }

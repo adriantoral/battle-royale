@@ -12,22 +12,26 @@ public class Arco extends Herramienta
     La pasiva quita vida segun el danio maximo de la herramienta
      */
 
-    public Arco (Integer danio)
-    {
-        super("Arco vitalicio", danio, 15, TiposHerramientas.DISTANCIA);
-    }
+	public Arco (Integer danio)
+	{
+		super("Arco vitalicio", danio, 15, TiposHerramientas.DISTANCIA);
+	}
 
-    @Override
-    public void pasiva (Personaje personaje, Personaje jugador)
-    {
-        if (personaje.getTipo( ).equals(TiposPersonajes.TANQUE))
-        {
-            // Pasiva
-            Integer danio = new Double(this.getDanio( ) * 0.2).intValue( );
-            personaje.setSalud(personaje.getSalud( ) - danio);
+	@Override
+	public String pasiva (Personaje personaje, Personaje jugador)
+	{
+		if (personaje.getTipo( ).equals(TiposPersonajes.TANQUE))
+		{
+			// Pasiva
+			Integer danio = new Double(this.getDanio( ) * 0.2).intValue( );
+			personaje.setSalud(personaje.getSalud( ) - danio);
 
-            // Depuracion
-            System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha hecho " + danio + " de danio a " + personaje.getNombre( ) + " (" + personaje.getSalud( ) + ")\u001B[37m");
-        }
-    }
+			// Depuracion
+			System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha hecho " + danio + " de danio a " + personaje.getNombre( ) + " (" + personaje.getSalud( ) + ")\u001B[37m");
+
+			return "\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha hecho " + danio + " de danio a " + personaje.getNombre( ) + " (" + personaje.getSalud( ) + ")\u001B[37m";
+		}
+
+		return "\u001B[33m[PASIVA] NO APLICADA\u001B[37m";
+	}
 }

@@ -19,39 +19,25 @@ public abstract class Habilidad
             - invocar() -> cura 20hp al jugador
      */
 
-    private Personaje personaje;
+	private Personaje personaje;
 
-    private TipoObjetivo objetivo;
+	private TipoObjetivo objetivo;
 
-    public abstract void invocar ( );
+	public abstract String invocar ( );
 
-    public abstract void mejorar ( );
+	public abstract String mejorar ( );
 
-    @Override
-    public String toString ( )
-    {
-        return "Habilidad{" +
-                ", objetivo=" + objetivo +
-                '}';
-    }
+	@Override
+	public String toString ( )
+	{
+		return "Habilidad{" + ", objetivo=" + objetivo + '}';
+	}
 
-    public Personaje getPersonaje ( )
-    {
-        return personaje;
-    }
+	public Personaje getPersonaje ( ) {return personaje;}
 
-    public void setPersonaje (Personaje personaje)
-    {
-        this.personaje = personaje;
-    }
+	public void setPersonaje (Personaje personaje) {this.personaje = personaje;}
 
-    public TipoObjetivo getObjetivo ( )
-    {
-        return objetivo;
-    }
+	public TipoObjetivo getObjetivo ( ) {return objetivo;}
 
-    public void setObjetivo (TipoObjetivo objetivo)
-    {
-        this.objetivo = objetivo;
-    }
+	public void setObjetivo (TipoObjetivo objetivo) {this.objetivo = objetivo;}
 }

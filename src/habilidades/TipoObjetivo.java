@@ -2,7 +2,5 @@ package habilidades;
 
 public enum TipoObjetivo
 {
-    ENEMIGO,
-    JUGADOR,
-    OTRO
+	ENEMIGO, JUGADOR, OTRO
 }

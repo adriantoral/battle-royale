@@ -11,44 +11,47 @@ public class Letalidad extends Habilidad
     Cuando se mejora incrementa la cantidad de penetracion de armadura en 12
      */
 
-    static Integer manaNecesitado = 3;
+	static final Integer manaNecesitado = 3;
 
-    private Integer letalidad;
+	private Integer letalidad;
 
-    public Letalidad (Personaje personaje, Integer letalidad)
-    {
-        this.setPersonaje(personaje);
-        this.setObjetivo(TipoObjetivo.JUGADOR);
-        this.letalidad = letalidad;
-    }
+	public Letalidad (Personaje personaje, Integer letalidad)
+	{
+		this.setPersonaje(personaje);
+		this.setObjetivo(TipoObjetivo.JUGADOR);
+		this.letalidad = letalidad;
+	}
 
-    @Override
-    public void invocar ( )
-    {
-        if (this.getPersonaje( ).getMana( ) >= Letalidad.manaNecesitado)
-        {
-            // Invocacion
-            this.getPersonaje( ).setPenetracionArmadura(this.getPersonaje( ).getPenetracionArmadura( ) + this.letalidad);
-            this.getPersonaje( ).setMana(this.getPersonaje( ).getMana( ) - Letalidad.manaNecesitado);
+	@Override
+	public String invocar ( )
+	{
+		if (this.getPersonaje( ).getMana( ) >= Letalidad.manaNecesitado)
+		{
+			// Invocacion
+			this.getPersonaje( ).setPenetracionArmadura(this.getPersonaje( ).getPenetracionArmadura( ) + this.letalidad);
+			this.getPersonaje( ).setMana(this.getPersonaje( ).getMana( ) - Letalidad.manaNecesitado);
 
-            // Depuracion
-            System.out.println("\u001B[34m[HABILIDAD] Ha aumentado en " + this.letalidad + " la penetracion de armadura de " + this.getPersonaje( ).getNombre( ) + " (" + this.getPersonaje( ).getPenetracionArmadura( ) + ")\u001B[37m");
-        }
+			// Depuracion
+			System.out.println("\u001B[34m[HABILIDAD] Ha aumentado en " + this.letalidad + " la penetracion de armadura de " + this.getPersonaje( ).getNombre( ) + " (" + this.getPersonaje( ).getPenetracionArmadura( ) + ")\u001B[37m");
 
-        else
-        {
-            System.out.println("NO has tenido mana para invocar la habilidad, se mejorara automaticamente...");
-            this.mejorar( );
-        }
-    }
+			return "\u001B[34m[HABILIDAD] Ha aumentado en " + this.letalidad + " la penetracion de armadura de " + this.getPersonaje( ).getNombre( ) + " (" + this.getPersonaje( ).getPenetracionArmadura( ) + ")\u001B[37m";
+		}
 
-    @Override
-    public void mejorar ( )
-    {
-        // Mejora
-        this.letalidad += 12;
+		System.out.println("NO has tenido mana para invocar la habilidad, se mejorara automaticamente...");
+		this.mejorar( );
 
-        // Depuracion
-        System.out.println("\u001B[34m[MEJORA] Ha mejorado en 12 la penetracion de armadura de " + this.getPersonaje( ).getNombre( ) + " (" + this.letalidad + ")\u001B[37m");
-    }
+		return "NO has tenido mana para invocar la habilidad, se mejorara automaticamente...";
+	}
+
+	@Override
+	public String mejorar ( )
+	{
+		// Mejora
+		this.letalidad += 12;
+
+		// Depuracion
+		System.out.println("\u001B[34m[MEJORA] Ha mejorado en 12 la penetracion de armadura de " + this.getPersonaje( ).getNombre( ) + " (" + this.letalidad + ")\u001B[37m");
+
+		return "\u001B[34m[MEJORA] Ha mejorado en 12 la penetracion de armadura de " + this.getPersonaje( ).getNombre( ) + " (" + this.letalidad + ")\u001B[37m";
+	}
 }
