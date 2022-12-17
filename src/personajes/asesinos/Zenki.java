@@ -22,7 +22,7 @@ public class Zenki extends Personaje
 		this.setTipo(TiposPersonajes.ASESINO);
 
 		// Inicializa las varibles de utilidad del personaje
-		this.setHerramienta(new Daga(120));
+		this.setHerramienta(new Daga( ));
 
 		this.setHabilidad1(new Letalidad(this, 20));
 		this.setHabilidad2(new Intensificacion(this, 10));

@@ -7,7 +7,13 @@
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="d4086" binding="panelBotones" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+      <grid id="8d355" binding="panelHerramientas" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints border-constraint="North"/>
+        <properties/>
+        <border type="none" title="Seleccione una herramienta"/>
+        <children/>
+      </grid>
+      <grid id="d4086" binding="panelPersonajes" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
         <constraints border-constraint="Center"/>
         <properties>
           <autoscrolls value="false"/>

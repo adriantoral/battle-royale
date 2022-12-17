@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class MenuPrincipal extends Frame
 {
-	private JPanel panelPrincipal, panelBotones;
+	private JPanel panelPrincipal, panelPersonajes, panelHerramientas;
 
 	public MenuPrincipal (String title) throws
 	                                    HeadlessException
@@ -16,7 +16,7 @@ public class MenuPrincipal extends Frame
 		this.setContentPane(this.panelPrincipal);
 	}
 
-	public JPanel getPanelPrincipal ( ) {return panelPrincipal;}
+	public JPanel getPanelPersonajes ( ) {return panelPersonajes;}
 
-	public JPanel getPanelBotones ( ) {return panelBotones;}
+	public JPanel getPanelHerramientas ( ) {return panelHerramientas;}
 }

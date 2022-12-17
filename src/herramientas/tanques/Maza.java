@@ -13,9 +13,9 @@ public class Maza extends Herramienta
     La pasiva mejora automaticamente una habilidad aleatoriamente
      */
 
-	public Maza (Integer danio)
+	public Maza ( )
 	{
-		super("Maza de forja", danio, 100, TiposHerramientas.DEFENSA);
+		super("Maza de forja", 45, 100, TiposHerramientas.DEFENSA);
 	}
 
 	@Override

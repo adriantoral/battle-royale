@@ -20,7 +20,7 @@ public class Sariel extends Personaje
 		this.setTipo(TiposPersonajes.MAGO);
 
 		// Inicializa las varibles de utilidad del personaje
-		this.setHerramienta(new Arco(80));
+		this.setHerramienta(new Arco( ));
 
 		this.setHabilidad1(new Envenenamiento(this, 15));
 		this.setHabilidad2(new Intensificacion(this, 10));

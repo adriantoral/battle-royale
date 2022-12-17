@@ -20,7 +20,7 @@ public class Drukhari extends Personaje
 		this.setTipo(TiposPersonajes.TANQUE);
 
 		// Inicializa las varibles de utilidad del personaje
-		this.setHerramienta(new Escudo(2));
+		this.setHerramienta(new Escudo( ));
 
 		this.setHabilidad1(new Curacion(this, 100));
 		this.setHabilidad2(new Mitigacion(this, 10));

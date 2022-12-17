@@ -1,5 +1,11 @@
 import excepciones.LongitudJugadoresInsuficiente;
 import habilidades.TipoObjetivo;
+import herramientas.Herramienta;
+import herramientas.asesinos.Daga;
+import herramientas.asesinos.Espada;
+import herramientas.magos.Arco;
+import herramientas.tanques.Escudo;
+import herramientas.tanques.Maza;
 import interfazgrafica.MenuJuego;
 import interfazgrafica.MenuPrincipal;
 import personajes.Personaje;
@@ -8,6 +14,7 @@ import personajes.magos.Sariel;
 import personajes.tanques.Drukhari;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -17,15 +24,21 @@ public class BattleRoyale
 	// Personajes disponibles para seleccionar
 	static final Personaje[] personajesSeleccionables = {new Zenki( ), new Sariel( ), new Drukhari( )};
 
+	// Herramientas disponibles para seleccionar
+	static final Herramienta[] herramientasSeleccionables = {new Daga( ), new Espada( ), new Arco( ), new Escudo( ), new Maza( )};
+
 	// Personajes disponibles en el juego
-	static List<Personaje> personajesJugables = new ArrayList<>( );
+	static final List<Personaje> personajesJugables = new ArrayList<>( );
 
 	// Personaje del jugador, personaje que ataca y personaje atacado
 	static Personaje personajeJugador = new Zenki( ), personajeAtacante = new Zenki( ), personajeAtacado = new Zenki( );
 
+	// Herramienta del jugador
+	static Herramienta herramientaJugador = new Daga( );
+
 	// Crear el menu principal y menu de juego
-	static MenuPrincipal menuPrincipal = new MenuPrincipal("BattleRoyale V3");
-	static MenuJuego menuJuego = new MenuJuego("BattleRoyale V3");
+	static final MenuPrincipal menuPrincipal = new MenuPrincipal("BattleRoyale Java - Seleccion de personaje");
+	static final MenuJuego menuJuego = new MenuJuego("BattleRoyale Java - Interfaz de juego");
 
 	public static void nextPersonajes ( ) throws LongitudJugadoresInsuficiente
 	{
@@ -121,14 +134,15 @@ public class BattleRoyale
 	{
 		// Crear los botones para seleccionar el personaje del jugador
 		for (Personaje personaje : personajesSeleccionables)
-			menuPrincipal.getPanelBotones( ).add(new JButton(personaje.getNombre( ))
+			menuPrincipal.getPanelPersonajes( ).add(new JButton(personaje.getNombre( ))
 			{
 				public JButton construir ( )
 				{
 					// Crear el listener del boton
 					this.addActionListener(e -> {
-						// Cambiando el personaje principal
+						// Cambiando el personaje principal y su herramienta
 						personajeJugador = personaje;
+						personaje.setHerramienta(herramientaJugador);
 
 						// Cambiando el personaje principal
 						personajesJugables.add(0, personajeJugador);
@@ -139,12 +153,59 @@ public class BattleRoyale
 						// Mostrar el personaje del jugador en pantalla
 						System.out.println(personajeJugador);
 
+						// Cambiando el color del boton
+						this.setBackground(Color.cyan);
+
 						// Cerrar la ventana del menu principal
 						menuPrincipal.dispose( );
 
 						// Hacer la ventana del menu de juego visible
 						menuJuego.setVisible(true);
 					});
+
+					// Quitando el borde del focus
+					this.setFocusPainted(false);
+
+					// Cambiado el color del boton
+					this.setBackground(Color.white);
+					this.setOpaque(true);
+
+					// Devolver el boton
+					return this;
+				}
+			}.construir( ));
+
+		// Crear los botones para seleccionar la herramienta del jugador
+		for (Herramienta herramienta : herramientasSeleccionables)
+			menuPrincipal.getPanelHerramientas( ).add(new JButton(herramienta.getNombre( ))
+			{
+				public JButton construir ( )
+				{
+					// Crear el listener del boton
+					this.addActionListener(e -> {
+						// Cambiando el personaje principal
+						herramientaJugador = herramienta;
+
+						// Cambiar la herramienta del jugador
+						personajeJugador.setHerramienta(herramientaJugador);
+
+						// Mostrar el personaje del jugador en pantalla
+						System.out.println(personajeJugador);
+
+						// Cambiar el color de todos los botones
+						for (Component boton : menuPrincipal.getPanelHerramientas( ).getComponents( ))
+							if (boton instanceof JButton) boton.setBackground(Color.white);
+
+						// Cambiando el color del boton
+						this.setBackground(Color.cyan);
+					});
+
+					// Quitando el borde del focus
+					this.setFocusPainted(false);
+
+					// Cambiado el color del boton
+					this.setBackground(Color.white);
+					this.setOpaque(true);
 
 					// Devolver el boton
 					return this;
@@ -186,15 +247,19 @@ public class BattleRoyale
 		});
 
 		// Crea los personajes
-		for (int i = 0; i < 1; i++)
+		for (int i = 0; i < 10; i++)
 		{
 			// Crear los personajes haciendo una nueva instancia desde la lista de los personajes
 			try
 			{
 				personajesJugables.add(personajesSeleccionables[new Random( ).nextInt(personajesSeleccionables.length)].getClass( ).newInstance( ));
 				personajesJugables.get(personajesJugables.size( ) - 1).setNombre("ROBOT " + i);
+				personajesJugables.get(personajesJugables.size( ) - 1).setHerramienta(herramientasSeleccionables[new Random( ).nextInt(herramientasSeleccionables.length)].getClass( ).newInstance( ));
 			}
 			catch (InstantiationException | IllegalAccessException e) {throw new RuntimeException(e);}
 		}
+
+		// Ajustar los componentes de la pantalla principal
+		menuPrincipal.pack( );
 	}
 }

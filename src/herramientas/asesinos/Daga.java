@@ -11,9 +11,9 @@ public class Daga extends Herramienta
     Herramienta de tipo distancia corta disenada para quitar armadura a tanques y vida extra a magos
      */
 
-	public Daga (Integer danio)
+	public Daga ( )
 	{
-		super("Daga del asesino", danio, 20, TiposHerramientas.MELEE);
+		super("Daga del asesino", 120, 20, TiposHerramientas.MELEE);
 	}
 
 	@Override

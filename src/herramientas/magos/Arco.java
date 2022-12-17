@@ -12,9 +12,9 @@ public class Arco extends Herramienta
     La pasiva quita vida segun el danio maximo de la herramienta
      */
 
-	public Arco (Integer danio)
+	public Arco ( )
 	{
-		super("Arco vitalicio", danio, 15, TiposHerramientas.DISTANCIA);
+		super("Arco vitalicio", 80, 15, TiposHerramientas.DISTANCIA);
 	}
 
 	@Override

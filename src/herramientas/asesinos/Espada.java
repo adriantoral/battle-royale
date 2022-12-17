@@ -12,9 +12,9 @@ public class Espada extends Herramienta
     La pasiva en tanques otorga armadura, en magos otorga danio y en asesinos otorga penetracion de armadura extra
      */
 
-	public Espada (Integer danio)
+	public Espada ( )
 	{
-		super("Espada de coran", danio, 40, TiposHerramientas.MELEE);
+		super("Espada de coran", 76, 40, TiposHerramientas.MELEE);
 	}
 
 	@Override
