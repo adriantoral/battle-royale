@@ -27,7 +27,7 @@ public abstract class Herramienta
 
 		// Depuracion
 		System.out.println("\u001B[32m[REPARACION " + this.getNombre( ) + "] Ha reparado su herramienta (" + this.durabilidad + ")\u001B[37m");
-		return "\u001B[32m[REPARACION " + this.getNombre( ) + "] Ha reparado su herramienta (" + this.durabilidad + ")\u001B[37m";
+		return "[REPARACION " + this.getNombre( ) + "] Ha reparado su herramienta (" + this.durabilidad + ")";
 	}
 
 	public abstract String pasiva (Personaje personaje, Personaje jugador);

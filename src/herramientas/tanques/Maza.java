@@ -29,7 +29,7 @@ public class Maza extends Herramienta
 			// Depuracion
 			System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha mejorado la habilidad 1\u001B[37m");
 
-			return "\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha mejorado la habilidad 1\u001B[37m";
+			return "[PASIVA " + this.getNombre( ) + "] Ha mejorado la habilidad 1";
 		}
 
 		else
@@ -40,7 +40,7 @@ public class Maza extends Herramienta
 			// Depuracion
 			System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha mejorado la habilidad 2\u001B[37m");
 
-			return "\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha mejorado la habilidad 2\u001B[37m";
+			return "[PASIVA " + this.getNombre( ) + "] Ha mejorado la habilidad 2";
 		}
 	}
 }

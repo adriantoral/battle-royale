@@ -17,6 +17,8 @@ public abstract class Personaje
 
 	public String atacar (Personaje personaje)
 	{
+		String returnString = "\n";
+
 		// Turno de ataque de los personajes
 		if (this.herramienta.getDurabilidad( ) > 0)
 		{
@@ -25,24 +27,24 @@ public abstract class Personaje
 			personaje.setSalud(personaje.getSalud( ) - danio);
 
 			// Depuracion y registro
-			System.out.println("\u001B[31m[AA] " + this.getNombre( ) + " ha hecho " + danio + " de danio a " + personaje.nombre + " (" + personaje.getSalud( ) + ")\u001B[37m");
+			System.out.println("\u001B[31m[AUTOATAQUE " + this.getNombre( ) + "] Ha hecho " + danio + " de danio a " + personaje.nombre + " (" + personaje.getSalud( ) + ")\u001B[37m");
 
 			// Reducir la durabilidad de la herramienta
 			this.herramienta.setDurabilidad(this.herramienta.getDurabilidad( ) - 1);
 
 			// Pasiva de los personajes
-			this.pasiva(personaje);
+			returnString += this.pasiva(personaje) + "\n";
 
 			// Pasiva de las herramientas
-			this.herramienta.pasiva(personaje, this);
+			returnString += this.herramienta.pasiva(personaje, this);
 
 			// Recargar el mana
 			this.mana += 3;
 
-			return "\u001B[31m[AA] " + this.getNombre( ) + " ha hecho " + danio + " de danio a " + personaje.nombre + " (" + personaje.getSalud( ) + ")\u001B[37m";
+			return "[AUTOATAQUE " + this.getNombre( ) + "] Ha hecho " + danio + " de danio a " + personaje.nombre + " (" + personaje.getSalud( ) + ")" + returnString;
 		}
 
-		return "\u001B[31m[AA] " + this.getNombre( ) + " no tiene durabilidad en la herramienta " + " (" + personaje.getHerramienta( ).getDurabilidad( ) + ")\u001B[37m";
+		return "[AUTOATAQUE " + this.getNombre( ) + "] No tiene durabilidad en la herramienta " + " (" + personaje.getHerramienta( ).getDurabilidad( ) + ")" + returnString;
 	}
 
 	public abstract String pasiva (Personaje personaje);

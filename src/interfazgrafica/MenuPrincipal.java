@@ -14,6 +14,10 @@ public class MenuPrincipal extends Frame
 
 		// Establecer el contenedor padre
 		this.setContentPane(this.panelPrincipal);
+
+		// Cambiando los layouts de los paneles
+		this.panelHerramientas.setLayout(new WrapLayout( ));
+		this.panelPersonajes.setLayout(new WrapLayout( ));
 	}
 
 	public JPanel getPanelPersonajes ( ) {return panelPersonajes;}

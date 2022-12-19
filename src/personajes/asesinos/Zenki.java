@@ -42,9 +42,9 @@ public class Zenki extends Personaje
 			// Depuracion
 			System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha recompuesto el uso de la herramienta\u001B[37m");
 
-			return "\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha recompuesto el uso de la herramienta\u001B[37m";
+			return "[PASIVA " + this.getNombre( ) + "] Ha recompuesto el uso de la herramienta";
 		}
 
-		return "\u001B[33m[PASIVA] NO APLICADA\u001B[37m";
+		return "[PASIVA " + this.getNombre( ) + "] NO APLICADA";
 	}
 }

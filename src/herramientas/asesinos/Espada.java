@@ -28,7 +28,7 @@ public class Espada extends Herramienta
 			// Depuracion
 			System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha aumentado en 3 el danio de la herramienta (" + jugador.getHerramienta( ).getDanio( ) + ")\u001B[37m");
 
-			return "\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha aumentado en 3 el danio de la herramienta (" + jugador.getHerramienta( ).getDanio( ) + ")\u001B[37m";
+			return "[PASIVA " + this.getNombre( ) + "] Ha aumentado en 3 el danio de la herramienta (" + jugador.getHerramienta( ).getDanio( ) + ")";
 		}
 
 		else if (jugador.getTipo( ).equals(TiposPersonajes.ASESINO))
@@ -39,7 +39,7 @@ public class Espada extends Herramienta
 			// Depuracion
 			System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha aumentado en 3 la penetracion de armadura (" + jugador.getPenetracionArmadura( ) + ")\u001B[37m");
 
-			return "\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha aumentado en 3 la penetracion de armadura (" + jugador.getPenetracionArmadura( ) + ")\u001B[37m";
+			return "[PASIVA " + this.getNombre( ) + "] Ha aumentado en 3 la penetracion de armadura (" + jugador.getPenetracionArmadura( ) + ")";
 		}
 
 		else if (jugador.getTipo( ).equals(TiposPersonajes.TANQUE))
@@ -50,9 +50,9 @@ public class Espada extends Herramienta
 			// Depuracion
 			System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha aumentado en 13 la armadura (" + jugador.getArmadura( ) + ")\u001B[37m");
 
-			return "\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha aumentado en 13 la armadura (" + jugador.getArmadura( ) + ")\u001B[37m";
+			return "[PASIVA " + this.getNombre( ) + "] Ha aumentado en 13 la armadura (" + jugador.getArmadura( ) + ")";
 		}
 
-		return "\u001B[33m[PASIVA] NO APLICADA\u001B[37m";
+		return "[PASIVA " + this.getNombre( ) + "] NO APLICADA";
 	}
 }

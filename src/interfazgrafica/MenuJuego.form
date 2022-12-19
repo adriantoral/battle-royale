@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="interfazgrafica.MenuJuego">
   <grid id="27dc6" binding="panelPrincipal" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="790" height="400"/>
+      <xy x="20" y="20" width="835" height="400"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -11,12 +11,13 @@
         <constraints border-constraint="Center"/>
         <properties>
           <contentType value="text/plain"/>
+          <editable value="false"/>
           <focusable value="false"/>
           <text value=""/>
         </properties>
       </component>
       <grid id="dd74f" binding="panelBotones" layout-manager="GridLayoutManager" row-count="2" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="0" left="0" bottom="0" right="0"/>
+        <margin top="10" left="10" bottom="10" right="10"/>
         <constraints border-constraint="South"/>
         <properties/>
         <border type="none"/>
@@ -28,6 +29,7 @@
             <properties>
               <actionCommand value=""/>
               <background color="-1"/>
+              <focusPainted value="false"/>
               <label value="Invocar habilidad 2"/>
               <text value="Invocar habilidad 2"/>
             </properties>
@@ -39,6 +41,7 @@
             <properties>
               <actionCommand value=""/>
               <background color="-1"/>
+              <focusPainted value="false"/>
               <label value="Mejorar habilidad 1"/>
               <text value="Mejorar habilidad 1"/>
             </properties>
@@ -49,6 +52,7 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <focusPainted value="false"/>
               <label value="Reparar herramienta"/>
               <text value="Reparar herramienta"/>
             </properties>
@@ -60,6 +64,7 @@
             <properties>
               <actionCommand value=""/>
               <background color="-1"/>
+              <focusPainted value="false"/>
               <label value="Mejorar habilidad 2"/>
               <text value="Mejorar habilidad 2"/>
             </properties>
@@ -71,6 +76,7 @@
             <properties>
               <actionCommand value=""/>
               <background color="-1"/>
+              <focusPainted value="false"/>
               <label value="Auto atacar"/>
               <text value="Auto atacar"/>
             </properties>
@@ -82,19 +88,25 @@
             <properties>
               <actionCommand value=""/>
               <background color="-1"/>
+              <focusPainted value="false"/>
               <label value="Invocar habilidad 1"/>
               <text value="Invocar habilidad 1"/>
             </properties>
           </component>
         </children>
       </grid>
-      <grid id="e8f3" binding="panelInformativo" layout-manager="BorderLayout" hgap="0" vgap="0">
+      <grid id="e8f3" binding="panelInformativo" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="10" left="10" bottom="10" right="10"/>
         <constraints border-constraint="North"/>
-        <properties/>
+        <properties>
+          <opaque value="true"/>
+        </properties>
         <border type="none"/>
         <children>
-          <component id="28656" class="javax.swing.JLabel" binding="textoInformativo1">
-            <constraints border-constraint="North"/>
+          <component id="bc48b" class="javax.swing.JLabel" binding="labelInformativo1">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
             <properties>
               <font name="Lucida Console" size="16" style="0"/>
               <foreground color="-11117893"/>
@@ -103,14 +115,172 @@
               <text value="Tu personaje es:"/>
             </properties>
           </component>
-          <component id="114f8" class="javax.swing.JLabel" binding="textoInformativo2">
-            <constraints border-constraint="South"/>
+          <component id="e17d1" class="javax.swing.JLabel" binding="labelInformativo2">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
             <properties>
               <font name="Lucida Console" size="16" style="0"/>
               <foreground color="-4500612"/>
               <horizontalAlignment value="0"/>
               <opaque value="false"/>
               <text value="El personaje a que estas atacando:"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="eac1a" binding="panelDatosPersonaje" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="10" bottom="0" right="10"/>
+        <constraints border-constraint="East"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="9cb77" class="javax.swing.JLabel" binding="labelSalud">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Lucida Console" size="12" style="0"/>
+              <horizontalAlignment value="10"/>
+              <text value="Salud:"/>
+            </properties>
+          </component>
+          <component id="c9d7" class="javax.swing.JLabel" binding="labelMana">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Lucida Console" size="12" style="0"/>
+              <horizontalAlignment value="10"/>
+              <text value="Mana:"/>
+            </properties>
+          </component>
+          <component id="506a1" class="javax.swing.JLabel" binding="labelArmadura">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Lucida Console" size="12" style="0"/>
+              <horizontalAlignment value="10"/>
+              <text value="Armadura:"/>
+            </properties>
+          </component>
+          <component id="b5357" class="javax.swing.JLabel" binding="labelPenetracionArmadura">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Lucida Console" size="12" style="0"/>
+              <horizontalAlignment value="10"/>
+              <text value="Penetracion Armadura:"/>
+            </properties>
+          </component>
+          <component id="4fcf" class="javax.swing.JLabel" binding="labelDatos1">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Lucida Console" size="15" style="1"/>
+              <horizontalAlignment value="10"/>
+              <text value="Datos del atacante"/>
+            </properties>
+          </component>
+          <component id="306bb" class="javax.swing.JLabel" binding="labelSalud2">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Lucida Console" size="12" style="0"/>
+              <horizontalAlignment value="10"/>
+              <text value="Salud:"/>
+            </properties>
+          </component>
+          <component id="6ac99" class="javax.swing.JLabel" binding="labelMana2">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Lucida Console" size="12" style="0"/>
+              <horizontalAlignment value="10"/>
+              <text value="Mana:"/>
+            </properties>
+          </component>
+          <component id="352b1" class="javax.swing.JLabel" binding="labelArmadura2">
+            <constraints>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Lucida Console" size="12" style="0"/>
+              <horizontalAlignment value="10"/>
+              <text value="Armadura:"/>
+            </properties>
+          </component>
+          <component id="386ca" class="javax.swing.JLabel" binding="labelPenetracionArmadura2">
+            <constraints>
+              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Lucida Console" size="12" style="0"/>
+              <horizontalAlignment value="10"/>
+              <text value="Penetracion Armadura:"/>
+            </properties>
+          </component>
+          <component id="d541b" class="javax.swing.JLabel" binding="labelDatos3">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Lucida Console" size="15" style="1"/>
+              <horizontalAlignment value="10"/>
+              <text value="Datos de la victima"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="ec595" binding="panelDatosHerramienta" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="10" bottom="0" right="10"/>
+        <constraints border-constraint="West"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="53ab2" class="javax.swing.JLabel" binding="labelDanio">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Lucida Console" size="12" style="0"/>
+              <horizontalAlignment value="10"/>
+              <text value="Danio:"/>
+            </properties>
+          </component>
+          <component id="b6e50" class="javax.swing.JLabel" binding="labelDurabilidad">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Lucida Console" size="12" style="0"/>
+              <horizontalAlignment value="10"/>
+              <text value="Durabilidad:"/>
+            </properties>
+          </component>
+          <component id="20a2b" class="javax.swing.JLabel" binding="labelDurabilidadReparada">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Lucida Console" size="12" style="0"/>
+              <horizontalAlignment value="10"/>
+              <text value="Durabilidad reparada:"/>
+            </properties>
+          </component>
+          <component id="879bb" class="javax.swing.JLabel" binding="labelDatos2">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Lucida Console" size="15" style="1"/>
+              <horizontalAlignment value="10"/>
+              <text value="Datos de la herramienta"/>
             </properties>
           </component>
         </children>

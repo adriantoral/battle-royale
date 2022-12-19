@@ -34,7 +34,7 @@ public class Intensificacion extends Habilidad
 			// Depuracion
 			System.out.println("\u001B[34m[HABILIDAD] Ha aumentado en " + this.intensificacion + " el danio de la herramienta de " + this.getPersonaje( ).getNombre( ) + " (" + this.getPersonaje( ).getHerramienta( ).getDanio( ) + ")\u001B[37m");
 
-			return "\u001B[34m[HABILIDAD] Ha aumentado en " + this.intensificacion + " el danio de la herramienta de " + this.getPersonaje( ).getNombre( ) + " (" + this.getPersonaje( ).getHerramienta( ).getDanio( ) + ")\u001B[37m";
+			return "[HABILIDAD] Ha aumentado en " + this.intensificacion + " el danio de la herramienta de " + this.getPersonaje( ).getNombre( ) + " (" + this.getPersonaje( ).getHerramienta( ).getDanio( ) + ")";
 		}
 
 		System.out.println("NO has tenido mana para invocar la habilidad, se mejorara automaticamente...");
@@ -52,6 +52,6 @@ public class Intensificacion extends Habilidad
 		// Depuracion
 		System.out.println("\u001B[34m[MEJORA] Ha mejorado en 15 la intensificacion de " + this.getPersonaje( ).getNombre( ) + " (" + this.intensificacion + ")\u001B[37m");
 
-		return "\u001B[34m[MEJORA] Ha mejorado en 15 la intensificacion de " + this.getPersonaje( ).getNombre( ) + " (" + this.intensificacion + ")\u001B[37m";
+		return "[MEJORA] Ha mejorado en 15 la intensificacion de " + this.getPersonaje( ).getNombre( ) + " (" + this.intensificacion + ")";
 	}
 }

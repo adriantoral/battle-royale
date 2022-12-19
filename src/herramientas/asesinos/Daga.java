@@ -27,7 +27,7 @@ public class Daga extends Herramienta
 			// Depuracion
 			System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha reducido en 20 la armadura de " + personaje.getNombre( ) + " (" + personaje.getArmadura( ) + ")\u001B[37m");
 
-			return "\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha reducido en 20 la armadura de " + personaje.getNombre( ) + " (" + personaje.getArmadura( ) + ")\u001B[37m";
+			return "[PASIVA " + this.getNombre( ) + "] Ha reducido en 20 la armadura de " + personaje.getNombre( ) + " (" + personaje.getArmadura( ) + ")";
 		}
 
 		else if (personaje.getTipo( ).equals(TiposPersonajes.MAGO))
@@ -38,9 +38,9 @@ public class Daga extends Herramienta
 			// Depuracion
 			System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha quitado 10 de salud a " + personaje.getNombre( ) + " (" + personaje.getSalud( ) + ")\u001B[37m");
 
-			return "\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha quitado 10 de salud a " + personaje.getNombre( ) + " (" + personaje.getSalud( ) + ")\u001B[37m";
+			return "[PASIVA " + this.getNombre( ) + "] Ha quitado 10 de salud a " + personaje.getNombre( ) + " (" + personaje.getSalud( ) + ")";
 		}
 
-		return "\u001B[33m[PASIVA] NO APLICADA\u001B[37m";
+		return "[PASIVA " + this.getNombre( ) + "] NO APLICADA";
 	}
 }

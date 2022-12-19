@@ -62,9 +62,23 @@ public class BattleRoyale
 			// Recargar el mana
 			personajeAtacante.setMana(personajeAtacante.getMana( ) + 3);
 
-			// Cambiar el texto de los label
-			menuJuego.getTextoInformativo1( ).setText("Personaje atacando: " + personajeAtacante.getNombre( ) + " (" + personajeAtacante.getTipo( ) + (personajeAtacante == personajeJugador ? ") (TU PERSONAJE)" : ")"));
-			menuJuego.getTextoInformativo2( ).setText("Personaje atacado: " + personajeAtacado.getNombre( ) + " (" + personajeAtacado.getTipo( ) + (personajeAtacado == personajeJugador ? ") (TU PERSONAJE)" : ")"));
+			// Cambiar el texto de los labels
+			menuJuego.getLabelInformativo1( ).setText("Personaje atacando: " + personajeAtacante.getNombre( ) + " (" + personajeAtacante.getTipo( ) + (personajeAtacante == personajeJugador ? ") (TU PERSONAJE)" : ")"));
+			menuJuego.getLabelInformativo2( ).setText("Personaje atacado: " + personajeAtacado.getNombre( ) + " (" + personajeAtacado.getTipo( ) + (personajeAtacado == personajeJugador ? ") (TU PERSONAJE)" : ")"));
+
+			menuJuego.getLabelSalud( ).setText("Salud: " + personajeAtacante.getSalud( ));
+			menuJuego.getLabelMana( ).setText("Mana: " + personajeAtacante.getMana( ));
+			menuJuego.getLabelArmadura( ).setText("Armadura: " + personajeAtacante.getArmadura( ));
+			menuJuego.getLabelPenetracionArmadura( ).setText("Penetracion: " + personajeAtacante.getPenetracionArmadura( ));
+
+			menuJuego.getLabelSalud2( ).setText("Salud: " + personajeAtacado.getSalud( ));
+			menuJuego.getLabelMana2( ).setText("Mana: " + personajeAtacado.getMana( ));
+			menuJuego.getLabelArmadura2( ).setText("Armadura: " + personajeAtacado.getArmadura( ));
+			menuJuego.getLabelPenetracionArmadura2( ).setText("Penetracion: " + personajeAtacado.getPenetracionArmadura( ));
+
+			menuJuego.getLabelDanio( ).setText("Danio: " + personajeAtacante.getHerramienta( ).getDanio( ));
+			menuJuego.getLabelDurabilidad( ).setText("Durabilidad: " + personajeAtacante.getHerramienta( ).getDurabilidad( ));
+			menuJuego.getLabelDurabilidadReparada( ).setText("Durabilidad reparada: " + personajeAtacante.getHerramienta( ).getDurabilidadReparada( ));
 
 			// Simular la batalla si es un robot
 			if (personajeAtacante != personajeJugador) new Thread(BattleRoyale::jugar).start( );
@@ -247,7 +261,7 @@ public class BattleRoyale
 		});
 
 		// Crea los personajes
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 2; i++)
 		{
 			// Crear los personajes haciendo una nueva instancia desde la lista de los personajes
 			try

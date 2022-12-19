@@ -42,6 +42,7 @@ public class Drukhari extends Personaje
 
 		// Depuracion
 		System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha bajado en " + danio + " el danio de la herramienta de " + personaje.getNombre( ) + " (" + personaje.getHerramienta( ).getDanio( ) + ")\u001B[37m");
-		return "\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha bajado en " + danio + " el danio de la herramienta de " + personaje.getNombre( ) + " (" + personaje.getHerramienta( ).getDanio( ) + ")\u001B[37m";
+
+		return "[PASIVA " + this.getNombre( ) + "] Ha bajado en " + danio + " el danio de la herramienta de " + personaje.getNombre( ) + " (" + personaje.getHerramienta( ).getDanio( ) + ")";
 	}
 }

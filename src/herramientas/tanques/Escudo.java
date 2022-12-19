@@ -27,7 +27,7 @@ public class Escudo extends Herramienta
 		System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha reducido en 5 la durabilidad de la herramienta de " + personaje.getNombre( ) + " (" + personaje.getHerramienta( ).getDurabilidad( ) + ")\u001B[37m");
 		System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha aumentado en 10 su salud (" + jugador.getSalud( ) + ")\u001B[37m");
 
-		return "\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha reducido en 5 la durabilidad de la herramienta de " + personaje.getNombre( ) + " (" + personaje.getHerramienta( )
-		                                                                                                                                                       .getDurabilidad( ) + ")\u001B[37m\n" + "\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha aumentado en" + " 10 su salud (" + jugador.getSalud( ) + ")\u001B[37m";
+		return "[PASIVA " + this.getNombre( ) + "] Ha reducido en 5 la durabilidad de la herramienta de " + personaje.getNombre( ) + " (" + personaje.getHerramienta( )
+		                                                                                                                                             .getDurabilidad( ) + ")\n[PASIVA " + this.getNombre( ) + "] Ha aumentado en" + " 10 su salud (" + jugador.getSalud( ) + ")";
 	}
 }

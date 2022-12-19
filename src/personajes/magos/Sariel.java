@@ -37,8 +37,10 @@ public class Sariel extends Personaje
 
 			// Depuracion
 			System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha recuperado " + salud + " de salud (" + this.getSalud( ) + ")\u001B[37m");
+
+			return "[PASIVA " + this.getNombre( ) + "] Ha recuperado " + salud + " de salud (" + this.getSalud( ) + ")";
 		}
 
-		return "\u001B[33m[PASIVA] NO APLICADA\u001B[37m";
+		return "[PASIVA " + this.getNombre( ) + "] NO APLICADA";
 	}
 }

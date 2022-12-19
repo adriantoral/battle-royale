@@ -29,9 +29,9 @@ public class Arco extends Herramienta
 			// Depuracion
 			System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha hecho " + danio + " de danio a " + personaje.getNombre( ) + " (" + personaje.getSalud( ) + ")\u001B[37m");
 
-			return "\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha hecho " + danio + " de danio a " + personaje.getNombre( ) + " (" + personaje.getSalud( ) + ")\u001B[37m";
+			return "[PASIVA " + this.getNombre( ) + "] Ha hecho " + danio + " de danio a " + personaje.getNombre( ) + " (" + personaje.getSalud( ) + ")";
 		}
 
-		return "\u001B[33m[PASIVA] NO APLICADA\u001B[37m";
+		return "[PASIVA " + this.getNombre( ) + "] NO APLICADA";
 	}
 }
