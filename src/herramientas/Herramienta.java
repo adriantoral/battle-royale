@@ -20,7 +20,7 @@ public abstract class Herramienta
 		this.tipo = tipo;
 	}
 
-	public String reparar ( )
+	final public String reparar ( )
 	{
 		// Invocacion
 		this.durabilidad = this.durabilidadReparada;

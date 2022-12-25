@@ -15,7 +15,7 @@ public abstract class Personaje
 
 	private Herramienta herramienta;
 
-	public String atacar (Personaje personaje)
+	final public String atacar (Personaje personaje)
 	{
 		String returnString = "\n";
 

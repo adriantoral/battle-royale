@@ -21,6 +21,8 @@ public class MenuJuego extends Frame
 		this.setVisible(false);
 	}
 
+	public JPanel getPanelBotones ( ) {return panelBotones;}
+
 	public JTextPane getPanelRegistro ( ) {return panelRegistro;}
 
 	public JButton getBotonAtacar ( ) {return botonAtacar;}
