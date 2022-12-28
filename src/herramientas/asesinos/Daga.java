@@ -4,6 +4,9 @@ import herramientas.Herramienta;
 import herramientas.TiposHerramientas;
 import personajes.Personaje;
 import personajes.TiposPersonajes;
+import utilidades.Depuracion;
+
+import java.io.IOException;
 
 public class Daga extends Herramienta
 {
@@ -17,7 +20,7 @@ public class Daga extends Herramienta
 	}
 
 	@Override
-	public String pasiva (Personaje personaje, Personaje jugador)
+	public String pasiva (Personaje personaje, Personaje jugador) throws IOException
 	{
 		if (personaje.getTipo( ).equals(TiposPersonajes.TANQUE))
 		{
@@ -25,7 +28,7 @@ public class Daga extends Herramienta
 			personaje.setArmadura(personaje.getArmadura( ) - 20);
 
 			// Depuracion
-			System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha reducido en 20 la armadura de " + personaje.getNombre( ) + " (" + personaje.getArmadura( ) + ")\u001B[37m");
+			Depuracion.mostrarGuardar("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha reducido en 20 la armadura de " + personaje.getNombre( ) + " (" + personaje.getArmadura( ) + ")\u001B[37m");
 
 			return "[PASIVA " + this.getNombre( ) + "] Ha reducido en 20 la armadura de " + personaje.getNombre( ) + " (" + personaje.getArmadura( ) + ")";
 		}
@@ -36,7 +39,7 @@ public class Daga extends Herramienta
 			personaje.setSalud(personaje.getSalud( ) - 10);
 
 			// Depuracion
-			System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha quitado 10 de salud a " + personaje.getNombre( ) + " (" + personaje.getSalud( ) + ")\u001B[37m");
+			Depuracion.mostrarGuardar("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha quitado 10 de salud a " + personaje.getNombre( ) + " (" + personaje.getSalud( ) + ")\u001B[37m");
 
 			return "[PASIVA " + this.getNombre( ) + "] Ha quitado 10 de salud a " + personaje.getNombre( ) + " (" + personaje.getSalud( ) + ")";
 		}

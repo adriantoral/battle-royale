@@ -3,6 +3,9 @@ package habilidades.potenciadores;
 import habilidades.Habilidad;
 import habilidades.TipoObjetivo;
 import personajes.Personaje;
+import utilidades.Depuracion;
+
+import java.io.IOException;
 
 public class Intensificacion extends Habilidad
 {
@@ -23,7 +26,7 @@ public class Intensificacion extends Habilidad
 	}
 
 	@Override
-	public String invocar ( )
+	public String invocar ( ) throws IOException
 	{
 		if (this.getPersonaje( ).getMana( ) >= Intensificacion.manaNecesitado)
 		{
@@ -32,25 +35,25 @@ public class Intensificacion extends Habilidad
 			this.getPersonaje( ).setMana(this.getPersonaje( ).getMana( ) - Intensificacion.manaNecesitado);
 
 			// Depuracion
-			System.out.println("\u001B[34m[HABILIDAD] Ha aumentado en " + this.intensificacion + " el danio de la herramienta de " + this.getPersonaje( ).getNombre( ) + " (" + this.getPersonaje( ).getHerramienta( ).getDanio( ) + ")\u001B[37m");
+			Depuracion.mostrarGuardar("\u001B[34m[HABILIDAD] Ha aumentado en " + this.intensificacion + " el danio de la herramienta de " + this.getPersonaje( ).getNombre( ) + " (" + this.getPersonaje( ).getHerramienta( ).getDanio( ) + ")\u001B[37m");
 
 			return "[HABILIDAD] Ha aumentado en " + this.intensificacion + " el danio de la herramienta de " + this.getPersonaje( ).getNombre( ) + " (" + this.getPersonaje( ).getHerramienta( ).getDanio( ) + ")";
 		}
 
-		System.out.println("NO has tenido mana para invocar la habilidad, se mejorara automaticamente...");
+		Depuracion.mostrarGuardar("NO has tenido mana para invocar la habilidad, se mejorara automaticamente...");
 		this.mejorar( );
 
 		return "NO has tenido mana para invocar la habilidad, se mejorara automaticamente...";
 	}
 
 	@Override
-	public String mejorar ( )
+	public String mejorar ( ) throws IOException
 	{
 		// Mejora
 		this.intensificacion += 15;
 
 		// Depuracion
-		System.out.println("\u001B[34m[MEJORA] Ha mejorado en 15 la intensificacion de " + this.getPersonaje( ).getNombre( ) + " (" + this.intensificacion + ")\u001B[37m");
+		Depuracion.mostrarGuardar("\u001B[34m[MEJORA] Ha mejorado en 15 la intensificacion de " + this.getPersonaje( ).getNombre( ) + " (" + this.intensificacion + ")\u001B[37m");
 
 		return "[MEJORA] Ha mejorado en 15 la intensificacion de " + this.getPersonaje( ).getNombre( ) + " (" + this.intensificacion + ")";
 	}

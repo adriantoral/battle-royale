@@ -3,7 +3,9 @@ package herramientas.tanques;
 import herramientas.Herramienta;
 import herramientas.TiposHerramientas;
 import personajes.Personaje;
+import utilidades.Depuracion;
 
+import java.io.IOException;
 import java.util.Random;
 
 public class Maza extends Herramienta
@@ -19,7 +21,7 @@ public class Maza extends Herramienta
 	}
 
 	@Override
-	public String pasiva (Personaje personaje, Personaje jugador)
+	public String pasiva (Personaje personaje, Personaje jugador) throws IOException
 	{
 		if (new Random( ).nextInt(100) <= 50)
 		{
@@ -27,7 +29,7 @@ public class Maza extends Herramienta
 			jugador.getHabilidad1( ).mejorar( );
 
 			// Depuracion
-			System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha mejorado la habilidad 1\u001B[37m");
+			Depuracion.mostrarGuardar("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha mejorado la habilidad 1\u001B[37m");
 
 			return "[PASIVA " + this.getNombre( ) + "] Ha mejorado la habilidad 1";
 		}
@@ -38,7 +40,7 @@ public class Maza extends Herramienta
 			jugador.getHabilidad2( ).mejorar( );
 
 			// Depuracion
-			System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha mejorado la habilidad 2\u001B[37m");
+			Depuracion.mostrarGuardar("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha mejorado la habilidad 2\u001B[37m");
 
 			return "[PASIVA " + this.getNombre( ) + "] Ha mejorado la habilidad 2";
 		}

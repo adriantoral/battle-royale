@@ -4,6 +4,9 @@ import herramientas.Herramienta;
 import herramientas.TiposHerramientas;
 import personajes.Personaje;
 import personajes.TiposPersonajes;
+import utilidades.Depuracion;
+
+import java.io.IOException;
 
 public class Arco extends Herramienta
 {
@@ -18,7 +21,7 @@ public class Arco extends Herramienta
 	}
 
 	@Override
-	public String pasiva (Personaje personaje, Personaje jugador)
+	public String pasiva (Personaje personaje, Personaje jugador) throws IOException
 	{
 		if (personaje.getTipo( ).equals(TiposPersonajes.TANQUE))
 		{
@@ -27,7 +30,7 @@ public class Arco extends Herramienta
 			personaje.setSalud(personaje.getSalud( ) - danio);
 
 			// Depuracion
-			System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha hecho " + danio + " de danio a " + personaje.getNombre( ) + " (" + personaje.getSalud( ) + ")\u001B[37m");
+			Depuracion.mostrarGuardar("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha hecho " + danio + " de danio a " + personaje.getNombre( ) + " (" + personaje.getSalud( ) + ")\u001B[37m");
 
 			return "[PASIVA " + this.getNombre( ) + "] Ha hecho " + danio + " de danio a " + personaje.getNombre( ) + " (" + personaje.getSalud( ) + ")";
 		}

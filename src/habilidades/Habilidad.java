@@ -2,6 +2,8 @@ package habilidades;
 
 import personajes.Personaje;
 
+import java.io.IOException;
+
 public abstract class Habilidad
 {
     /*
@@ -23,9 +25,9 @@ public abstract class Habilidad
 
 	private TipoObjetivo objetivo;
 
-	public abstract String invocar ( );
+	public abstract String invocar ( ) throws IOException;
 
-	public abstract String mejorar ( );
+	public abstract String mejorar ( ) throws IOException;
 
 	@Override
 	public String toString ( )

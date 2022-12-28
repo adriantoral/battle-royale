@@ -6,6 +6,9 @@ import herramientas.TiposHerramientas;
 import herramientas.asesinos.Hacha;
 import personajes.Personaje;
 import personajes.TiposPersonajes;
+import utilidades.Depuracion;
+
+import java.io.IOException;
 
 public class Samira extends Personaje
 {
@@ -30,12 +33,12 @@ public class Samira extends Personaje
 	}
 
 	@Override
-	public String pasiva (Personaje personaje)
+	public String pasiva (Personaje personaje) throws IOException
 	{
 		this.getHerramienta( ).setDanio(this.getHerramienta( ).getDanio( ) + ((this.getHerramienta( ).getDanio( ) * 5) / 10));
 
 		// Depuracion
-		System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha aumentado el danio de la herramienta (" + this.getHerramienta( ).getDanio( ) + ")\u001B[37m");
+		Depuracion.mostrarGuardar("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha aumentado el danio de la herramienta (" + this.getHerramienta( ).getDanio( ) + ")\u001B[37m");
 
 		return "[PASIVA " + this.getNombre( ) + "] Ha aumentado el danio de la herramienta (" + this.getHerramienta( ).getDanio( ) + ")";
 	}

@@ -14,9 +14,13 @@ import personajes.asesinos.Samira;
 import personajes.asesinos.Zenki;
 import personajes.magos.Sariel;
 import personajes.tanques.Drukhari;
+import utilidades.Depuracion;
+import utilidades.Ficheros;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -43,11 +47,11 @@ public class BattleRoyale
 	static final MenuPrincipal menuPrincipal = new MenuPrincipal("BattleRoyale Java - Seleccion de personaje");
 	static final MenuJuego menuJuego = new MenuJuego("BattleRoyale Java - Interfaz de juego");
 
-	public static void nextPersonajes ( ) throws LongitudJugadoresInsuficiente
+	public static void nextPersonajes ( ) throws LongitudJugadoresInsuficiente, IOException
 	{
 		// Eliminar personajes si mueren
-		if (personajeAtacado.getSalud( ) <= 0) System.out.println("Se ha eliminado al personaje: " + personajesJugables.remove(personajeAtacado));
-		if (personajeAtacante.getSalud( ) <= 0) System.out.println("Se ha eliminado al personaje: " + personajesJugables.remove(personajeAtacante));
+		if (personajeAtacado.getSalud( ) <= 0) Depuracion.mostrarGuardar("Se ha eliminado al personaje: " + personajesJugables.remove(personajeAtacado));
+		if (personajeAtacante.getSalud( ) <= 0) Depuracion.mostrarGuardar("Se ha eliminado al personaje: " + personajesJugables.remove(personajeAtacante));
 
 		if (personajesJugables.size( ) > 1)
 		{
@@ -56,7 +60,7 @@ public class BattleRoyale
 			personajeAtacado = personajesJugables.get(new Random( ).nextInt(personajesJugables.size( ))); // Personaje aleatorio de la lista
 			personajesJugables.add(personajeAtacante); // Meter de nuevo al personaje sacado
 
-			System.out.println("Turno del personaje: " + personajeAtacante.getNombre( ) + "\nAtacando al personaje: " + personajeAtacado.getNombre( ));
+			Depuracion.mostrarGuardar("Turno del personaje: " + personajeAtacante.getNombre( ) + "\nAtacando al personaje: " + personajeAtacado.getNombre( ));
 
 			// Cambiar de objetivos si la habilidad afecta al enemigo
 			if (personajeAtacante.getHabilidad1( ).getObjetivo( ).equals(TipoObjetivo.ENEMIGO)) personajeAtacante.getHabilidad1( ).setPersonaje(personajeAtacado);
@@ -69,7 +73,10 @@ public class BattleRoyale
 			actualizarLabels( );
 
 			// Simular la batalla si es un robot
-			if (personajeAtacante != personajeJugador) new Thread(BattleRoyale::jugar).start( );
+			if (personajeAtacante != personajeJugador) new Thread(( ) -> {
+				try {jugar( );}
+				catch (IOException e) {throw new RuntimeException(e);}
+			}).start( );
 
 			// Hacer visible la interfaz de juego cuando es el jugador
 			if (personajeAtacante == personajeJugador) for (Component component : menuJuego.getPanelBotones( ).getComponents( )) component.setVisible(true);
@@ -79,7 +86,7 @@ public class BattleRoyale
 		else throw new LongitudJugadoresInsuficiente("No quedan jugadores");
 	}
 
-	public static void nextPersonajesHandler ( )
+	public static void nextPersonajesHandler ( ) throws IOException
 	{
 		try
 		{
@@ -87,17 +94,17 @@ public class BattleRoyale
 			BattleRoyale.nextPersonajes( );
 		}
 
-		catch (LongitudJugadoresInsuficiente ignored)
+		catch (LongitudJugadoresInsuficiente | IOException ignored)
 		{
 			// Mostar en pantalla el ganador
-			System.out.println("HA GANADO EL PERSONAJE: " + personajesJugables.get(0));
+			Depuracion.mostrarGuardar("HA GANADO EL PERSONAJE: " + personajesJugables.get(0));
 
 			// Cerrar la ventana del menu de juego
 			menuJuego.dispose( );
 		}
 	}
 
-	public static void jugar ( )
+	public static void jugar ( ) throws IOException
 	{
 		// Variables para las opciones de juego
 		int opcion = new Random( ).nextInt(4), opcion2 = new Random( ).nextInt(2);
@@ -155,8 +162,11 @@ public class BattleRoyale
 		menuJuego.getLabelDurabilidadReparada( ).setText("Durabilidad reparada: " + personajeAtacante.getHerramienta( ).getDurabilidadReparada( ));
 	}
 
-	public static void main (String[] args)
+	public static void main (String[] args) throws IOException
 	{
+		// Limpiar el fichero de depuracion
+		Ficheros.limpiar(new File("depuracion.txt"));
+
 		SwingUtilities.invokeLater(new Runnable( )
 		{
 			@Override
@@ -178,10 +188,12 @@ public class BattleRoyale
 								personajesJugables.add(0, personajeJugador);
 
 								// Cambiando los personajes en uso
-								BattleRoyale.nextPersonajesHandler( );
+								try {BattleRoyale.nextPersonajesHandler( );}
+								catch (IOException ex) {throw new RuntimeException(ex);}
 
 								// Mostrar el personaje del jugador en pantalla
-								System.out.println(personajeJugador);
+								try {Depuracion.mostrarGuardar(personajeJugador.toString( ));}
+								catch (IOException ex) {throw new RuntimeException(ex);}
 
 								// Cambiando el color del boton
 								this.setBackground(Color.cyan);
@@ -220,7 +232,8 @@ public class BattleRoyale
 								personajeJugador.setHerramienta(herramientaJugador);
 
 								// Mostrar el personaje del jugador en pantalla
-								System.out.println(personajeJugador);
+								try {Depuracion.mostrarGuardar(personajeJugador.toString( ));}
+								catch (IOException ex) {throw new RuntimeException(ex);}
 
 								// Cambiar el color de todos los botones
 								for (Component boton : menuPrincipal.getPanelHerramientas( ).getComponents( ))
@@ -246,34 +259,59 @@ public class BattleRoyale
 				// menuPrincipal.validate( );
 
 				// Asignar funciones a los botones de juego
+
 				menuJuego.getBotonAtacar( ).addActionListener(e -> {
-					anadirRegistro(personajeAtacante.atacar(personajeAtacado));
-					BattleRoyale.nextPersonajesHandler( );
+					try
+					{
+						anadirRegistro(personajeAtacante.atacar(personajeAtacado));
+						BattleRoyale.nextPersonajesHandler( );
+					}
+					catch (IOException ignored) {}
 				});
 
 				menuJuego.getBotonHabilidad1Invocar( ).addActionListener(e -> {
-					anadirRegistro(personajeAtacante.getHabilidad1( ).invocar( ));
-					BattleRoyale.nextPersonajesHandler( );
+					try
+					{
+						anadirRegistro(personajeAtacante.getHabilidad1( ).invocar( ));
+						BattleRoyale.nextPersonajesHandler( );
+					}
+					catch (IOException ignored) {}
 				});
 
 				menuJuego.getBotonHabilidad1Mejorar( ).addActionListener(e -> {
-					anadirRegistro(personajeAtacante.getHabilidad1( ).mejorar( ));
-					BattleRoyale.nextPersonajesHandler( );
+					try
+					{
+						anadirRegistro(personajeAtacante.getHabilidad1( ).mejorar( ));
+						BattleRoyale.nextPersonajesHandler( );
+					}
+					catch (IOException ignored) {}
 				});
 
 				menuJuego.getBotonHabilidad2Invocar( ).addActionListener(e -> {
-					anadirRegistro(personajeAtacante.getHabilidad2( ).invocar( ));
-					BattleRoyale.nextPersonajesHandler( );
+					try
+					{
+						anadirRegistro(personajeAtacante.getHabilidad2( ).invocar( ));
+						BattleRoyale.nextPersonajesHandler( );
+					}
+					catch (IOException ignored) {}
 				});
 
 				menuJuego.getBotonHabilidad2Mejorar( ).addActionListener(e -> {
-					anadirRegistro(personajeAtacante.getHabilidad2( ).mejorar( ));
-					BattleRoyale.nextPersonajesHandler( );
+					try
+					{
+						anadirRegistro(personajeAtacante.getHabilidad2( ).mejorar( ));
+						BattleRoyale.nextPersonajesHandler( );
+					}
+					catch (IOException ignored) {}
 				});
 
 				menuJuego.getBotonReparar( ).addActionListener(e -> {
-					anadirRegistro(personajeAtacante.getHerramienta( ).reparar( ));
-					BattleRoyale.nextPersonajesHandler( );
+					try
+					{
+						anadirRegistro(personajeAtacante.getHerramienta( ).reparar( ));
+						BattleRoyale.nextPersonajesHandler( );
+					}
+					catch (IOException ignored) {}
 				});
 
 				// Ajustar los componentes de la pantalla principal

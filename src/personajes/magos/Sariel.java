@@ -6,6 +6,9 @@ import herramientas.TiposHerramientas;
 import herramientas.magos.Arco;
 import personajes.Personaje;
 import personajes.TiposPersonajes;
+import utilidades.Depuracion;
+
+import java.io.IOException;
 
 public class Sariel extends Personaje
 {
@@ -27,7 +30,7 @@ public class Sariel extends Personaje
 	}
 
 	@Override
-	public String pasiva (Personaje personaje)
+	public String pasiva (Personaje personaje) throws IOException
 	{
 		if (this.getHerramienta( ).getTipo( ).equals(TiposHerramientas.DISTANCIA))
 		{
@@ -36,7 +39,7 @@ public class Sariel extends Personaje
 			this.setSalud(this.getSalud( ) + salud);
 
 			// Depuracion
-			System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha recuperado " + salud + " de salud (" + this.getSalud( ) + ")\u001B[37m");
+			Depuracion.mostrarGuardar("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha recuperado " + salud + " de salud (" + this.getSalud( ) + ")\u001B[37m");
 
 			return "[PASIVA " + this.getNombre( ) + "] Ha recuperado " + salud + " de salud (" + this.getSalud( ) + ")";
 		}

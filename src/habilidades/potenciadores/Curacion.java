@@ -3,6 +3,9 @@ package habilidades.potenciadores;
 import habilidades.Habilidad;
 import habilidades.TipoObjetivo;
 import personajes.Personaje;
+import utilidades.Depuracion;
+
+import java.io.IOException;
 
 public class Curacion extends Habilidad
 {
@@ -23,7 +26,7 @@ public class Curacion extends Habilidad
 	}
 
 	@Override
-	public String invocar ( )
+	public String invocar ( ) throws IOException
 	{
 		if (this.getPersonaje( ).getMana( ) >= Curacion.manaNecesitado)
 		{
@@ -32,12 +35,12 @@ public class Curacion extends Habilidad
 			this.getPersonaje( ).setMana(this.getPersonaje( ).getMana( ) - Curacion.manaNecesitado);
 
 			// Depuracion
-			System.out.println("\u001B[34m[HABILIDAD] Ha curado " + this.curacion + " a " + this.getPersonaje( ).getNombre( ) + " (" + this.getPersonaje( ).getSalud( ) + ")\u001B[37m");
+			Depuracion.mostrarGuardar("\u001B[34m[HABILIDAD] Ha curado " + this.curacion + " a " + this.getPersonaje( ).getNombre( ) + " (" + this.getPersonaje( ).getSalud( ) + ")\u001B[37m");
 
 			return "[HABILIDAD] Ha curado " + this.curacion + " a " + this.getPersonaje( ).getNombre( ) + " (" + this.getPersonaje( ).getSalud( ) + ")";
 		}
 
-		System.out.println("NO has tenido mana para invocar la habilidad, se mejorara automaticamente...");
+		Depuracion.mostrarGuardar("NO has tenido mana para invocar la habilidad, se mejorara automaticamente...");
 		this.mejorar( );
 
 		return "NO has tenido mana para invocar la habilidad, se mejorara automaticamente...";
@@ -45,13 +48,13 @@ public class Curacion extends Habilidad
 	}
 
 	@Override
-	public String mejorar ( )
+	public String mejorar ( ) throws IOException
 	{
 		// Mejora
 		this.curacion += 20;
 
 		// Depuracion
-		System.out.println("\u001B[34m[MEJORA] Ha mejorado en 20 curacion de " + this.getPersonaje( ).getNombre( ) + " (" + this.curacion + ")\u001B[37m");
+		Depuracion.mostrarGuardar("\u001B[34m[MEJORA] Ha mejorado en 20 curacion de " + this.getPersonaje( ).getNombre( ) + " (" + this.curacion + ")\u001B[37m");
 
 		return "[MEJORA] Ha mejorado en 20 curacion de " + this.getPersonaje( ).getNombre( ) + " (" + this.curacion + ")";
 	}

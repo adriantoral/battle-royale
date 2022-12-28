@@ -3,6 +3,9 @@ package habilidades.potenciadores;
 import habilidades.Habilidad;
 import habilidades.TipoObjetivo;
 import personajes.Personaje;
+import utilidades.Depuracion;
+
+import java.io.IOException;
 
 public class Letalidad extends Habilidad
 {
@@ -23,7 +26,7 @@ public class Letalidad extends Habilidad
 	}
 
 	@Override
-	public String invocar ( )
+	public String invocar ( ) throws IOException
 	{
 		if (this.getPersonaje( ).getMana( ) >= Letalidad.manaNecesitado)
 		{
@@ -32,25 +35,25 @@ public class Letalidad extends Habilidad
 			this.getPersonaje( ).setMana(this.getPersonaje( ).getMana( ) - Letalidad.manaNecesitado);
 
 			// Depuracion
-			System.out.println("\u001B[34m[HABILIDAD] Ha aumentado en " + this.letalidad + " la penetracion de armadura de " + this.getPersonaje( ).getNombre( ) + " (" + this.getPersonaje( ).getPenetracionArmadura( ) + ")\u001B[37m");
+			Depuracion.mostrarGuardar("\u001B[34m[HABILIDAD] Ha aumentado en " + this.letalidad + " la penetracion de armadura de " + this.getPersonaje( ).getNombre( ) + " (" + this.getPersonaje( ).getPenetracionArmadura( ) + ")\u001B[37m");
 
 			return "[HABILIDAD] Ha aumentado en " + this.letalidad + " la penetracion de armadura de " + this.getPersonaje( ).getNombre( ) + " (" + this.getPersonaje( ).getPenetracionArmadura( ) + ")";
 		}
 
-		System.out.println("NO has tenido mana para invocar la habilidad, se mejorara automaticamente...");
+		Depuracion.mostrarGuardar("NO has tenido mana para invocar la habilidad, se mejorara automaticamente...");
 		this.mejorar( );
 
 		return "NO has tenido mana para invocar la habilidad, se mejorara automaticamente...";
 	}
 
 	@Override
-	public String mejorar ( )
+	public String mejorar ( ) throws IOException
 	{
 		// Mejora
 		this.letalidad += 12;
 
 		// Depuracion
-		System.out.println("\u001B[34m[MEJORA] Ha mejorado en 12 la penetracion de armadura de " + this.getPersonaje( ).getNombre( ) + " (" + this.letalidad + ")\u001B[37m");
+		Depuracion.mostrarGuardar("\u001B[34m[MEJORA] Ha mejorado en 12 la penetracion de armadura de " + this.getPersonaje( ).getNombre( ) + " (" + this.letalidad + ")\u001B[37m");
 
 		return "[MEJORA] Ha mejorado en 12 la penetracion de armadura de " + this.getPersonaje( ).getNombre( ) + " (" + this.letalidad + ")";
 	}

@@ -6,6 +6,9 @@ import herramientas.TiposHerramientas;
 import herramientas.tanques.Escudo;
 import personajes.Personaje;
 import personajes.TiposPersonajes;
+import utilidades.Depuracion;
+
+import java.io.IOException;
 
 public class Drukhari extends Personaje
 {
@@ -34,14 +37,14 @@ public class Drukhari extends Personaje
 	}
 
 	@Override
-	public String pasiva (Personaje personaje)
+	public String pasiva (Personaje personaje) throws IOException
 	{
 		// Pasiva
 		Integer danio = new Double(personaje.getHerramienta( ).getDanio( ) * 0.05).intValue( );
 		personaje.getHerramienta( ).setDanio(personaje.getHerramienta( ).getDanio( ) - danio);
 
 		// Depuracion
-		System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha bajado en " + danio + " el danio de la herramienta de " + personaje.getNombre( ) + " (" + personaje.getHerramienta( ).getDanio( ) + ")\u001B[37m");
+		Depuracion.mostrarGuardar("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha bajado en " + danio + " el danio de la herramienta de " + personaje.getNombre( ) + " (" + personaje.getHerramienta( ).getDanio( ) + ")\u001B[37m");
 
 		return "[PASIVA " + this.getNombre( ) + "] Ha bajado en " + danio + " el danio de la herramienta de " + personaje.getNombre( ) + " (" + personaje.getHerramienta( ).getDanio( ) + ")";
 	}

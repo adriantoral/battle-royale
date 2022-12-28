@@ -2,6 +2,9 @@ package personajes;
 
 import habilidades.Habilidad;
 import herramientas.Herramienta;
+import utilidades.Depuracion;
+
+import java.io.IOException;
 
 public abstract class Personaje
 {
@@ -15,7 +18,7 @@ public abstract class Personaje
 
 	private Herramienta herramienta;
 
-	final public String atacar (Personaje personaje)
+	final public String atacar (Personaje personaje) throws IOException
 	{
 		String returnString = "\n";
 
@@ -27,7 +30,7 @@ public abstract class Personaje
 			personaje.setSalud(personaje.getSalud( ) - danio);
 
 			// Depuracion y registro
-			System.out.println("\u001B[31m[AUTOATAQUE " + this.getNombre( ) + "] Ha hecho " + danio + " de danio a " + personaje.nombre + " (" + personaje.getSalud( ) + ")\u001B[37m");
+			Depuracion.mostrarGuardar("\u001B[31m[AUTOATAQUE " + this.getNombre( ) + "] Ha hecho " + danio + " de danio a " + personaje.nombre + " (" + personaje.getSalud( ) + ")\u001B[37m");
 
 			// Reducir la durabilidad de la herramienta
 			this.herramienta.setDurabilidad(this.herramienta.getDurabilidad( ) - 1);
@@ -47,7 +50,7 @@ public abstract class Personaje
 		return "[AUTOATAQUE " + this.getNombre( ) + "] No tiene durabilidad en la herramienta " + " (" + personaje.getHerramienta( ).getDurabilidad( ) + ")" + returnString;
 	}
 
-	public abstract String pasiva (Personaje personaje);
+	public abstract String pasiva (Personaje personaje) throws IOException;
 
 	@Override
 	public String toString ( )

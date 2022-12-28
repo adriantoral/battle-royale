@@ -1,6 +1,9 @@
 package herramientas;
 
 import personajes.Personaje;
+import utilidades.Depuracion;
+
+import java.io.IOException;
 
 public abstract class Herramienta
 {
@@ -20,17 +23,17 @@ public abstract class Herramienta
 		this.tipo = tipo;
 	}
 
-	final public String reparar ( )
+	final public String reparar ( ) throws IOException
 	{
 		// Invocacion
 		this.durabilidad = this.durabilidadReparada;
 
 		// Depuracion
-		System.out.println("\u001B[32m[REPARACION " + this.getNombre( ) + "] Ha reparado su herramienta (" + this.durabilidad + ")\u001B[37m");
+		Depuracion.mostrarGuardar("\u001B[32m[REPARACION " + this.getNombre( ) + "] Ha reparado su herramienta (" + this.durabilidad + ")\u001B[37m");
 		return "[REPARACION " + this.getNombre( ) + "] Ha reparado su herramienta (" + this.durabilidad + ")";
 	}
 
-	public abstract String pasiva (Personaje personaje, Personaje jugador);
+	public abstract String pasiva (Personaje personaje, Personaje jugador) throws IOException;
 
 	@Override
 	public String toString ( )

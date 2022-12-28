@@ -4,6 +4,9 @@ import herramientas.Herramienta;
 import herramientas.TiposHerramientas;
 import personajes.Personaje;
 import personajes.TiposPersonajes;
+import utilidades.Depuracion;
+
+import java.io.IOException;
 
 public class Espada extends Herramienta
 {
@@ -18,7 +21,7 @@ public class Espada extends Herramienta
 	}
 
 	@Override
-	public String pasiva (Personaje personaje, Personaje jugador)
+	public String pasiva (Personaje personaje, Personaje jugador) throws IOException
 	{
 		if (jugador.getTipo( ).equals(TiposPersonajes.MAGO))
 		{
@@ -26,7 +29,7 @@ public class Espada extends Herramienta
 			jugador.getHerramienta( ).setDanio(jugador.getHerramienta( ).getDanio( ) + 3);
 
 			// Depuracion
-			System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha aumentado en 3 el danio de la herramienta (" + jugador.getHerramienta( ).getDanio( ) + ")\u001B[37m");
+			Depuracion.mostrarGuardar("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha aumentado en 3 el danio de la herramienta (" + jugador.getHerramienta( ).getDanio( ) + ")\u001B[37m");
 
 			return "[PASIVA " + this.getNombre( ) + "] Ha aumentado en 3 el danio de la herramienta (" + jugador.getHerramienta( ).getDanio( ) + ")";
 		}
@@ -37,7 +40,7 @@ public class Espada extends Herramienta
 			jugador.setPenetracionArmadura(jugador.getPenetracionArmadura( ) + 3);
 
 			// Depuracion
-			System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha aumentado en 3 la penetracion de armadura (" + jugador.getPenetracionArmadura( ) + ")\u001B[37m");
+			Depuracion.mostrarGuardar("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha aumentado en 3 la penetracion de armadura (" + jugador.getPenetracionArmadura( ) + ")\u001B[37m");
 
 			return "[PASIVA " + this.getNombre( ) + "] Ha aumentado en 3 la penetracion de armadura (" + jugador.getPenetracionArmadura( ) + ")";
 		}
@@ -48,7 +51,7 @@ public class Espada extends Herramienta
 			jugador.setArmadura(jugador.getArmadura( ) + 13);
 
 			// Depuracion
-			System.out.println("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha aumentado en 13 la armadura (" + jugador.getArmadura( ) + ")\u001B[37m");
+			Depuracion.mostrarGuardar("\u001B[33m[PASIVA " + this.getNombre( ) + "] Ha aumentado en 13 la armadura (" + jugador.getArmadura( ) + ")\u001B[37m");
 
 			return "[PASIVA " + this.getNombre( ) + "] Ha aumentado en 13 la armadura (" + jugador.getArmadura( ) + ")";
 		}

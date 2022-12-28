@@ -3,6 +3,9 @@ package habilidades.potenciadores;
 import habilidades.Habilidad;
 import habilidades.TipoObjetivo;
 import personajes.Personaje;
+import utilidades.Depuracion;
+
+import java.io.IOException;
 
 public class Mitigacion extends Habilidad
 {
@@ -23,7 +26,7 @@ public class Mitigacion extends Habilidad
 	}
 
 	@Override
-	public String invocar ( )
+	public String invocar ( ) throws IOException
 	{
 		if (this.getPersonaje( ).getMana( ) >= Mitigacion.manaNecesitado)
 		{
@@ -32,25 +35,25 @@ public class Mitigacion extends Habilidad
 			this.getPersonaje( ).setMana(this.getPersonaje( ).getMana( ) - Mitigacion.manaNecesitado);
 
 			// Depuracion
-			System.out.println("\u001B[34m[HABILIDAD] Ha aumentado en " + this.mitigacion + " la armadura de " + this.getPersonaje( ).getNombre( ) + " (" + this.getPersonaje( ).getArmadura( ) + ")\u001B[37m");
+			Depuracion.mostrarGuardar("\u001B[34m[HABILIDAD] Ha aumentado en " + this.mitigacion + " la armadura de " + this.getPersonaje( ).getNombre( ) + " (" + this.getPersonaje( ).getArmadura( ) + ")\u001B[37m");
 
 			return "[HABILIDAD] Ha aumentado en " + this.mitigacion + " la armadura de " + this.getPersonaje( ).getNombre( ) + " (" + this.getPersonaje( ).getArmadura( ) + ")";
 		}
 
-		System.out.println("NO has tenido mana para invocar la habilidad, se mejorara automaticamente...");
+		Depuracion.mostrarGuardar("NO has tenido mana para invocar la habilidad, se mejorara automaticamente...");
 		this.mejorar( );
 
 		return "NO has tenido mana para invocar la habilidad, se mejorara automaticamente...";
 	}
 
 	@Override
-	public String mejorar ( )
+	public String mejorar ( ) throws IOException
 	{
 		// Mejora
 		this.mitigacion += 10;
 
 		// Depuracion
-		System.out.println("\u001B[34m[MEJORA] Ha mejorado en 10 la mitigacion de " + this.getPersonaje( ).getNombre( ) + " (" + this.mitigacion + ")\u001B[37m");
+		Depuracion.mostrarGuardar("\u001B[34m[MEJORA] Ha mejorado en 10 la mitigacion de " + this.getPersonaje( ).getNombre( ) + " (" + this.mitigacion + ")\u001B[37m");
 
 		return "[MEJORA] Ha mejorado en 10 la mitigacion de " + this.getPersonaje( ).getNombre( ) + " (" + this.mitigacion + ")";
 	}
